@@ -175,8 +175,7 @@ class CircleFloatingButtonState extends State<CircleFloatingButton> {
       width: 60 + widget.radius,
       height: 60 + widget.radius,
       child: Stack(
-        overflow: Overflow.visible,
-        children: List.generate(
+        clipBehavior: Clip.none, children: List.generate(
           quantity,
           (index) {
             var angulo = (90) / (quantity - 1) * (index);
@@ -230,8 +229,7 @@ class CircleFloatingButtonState extends State<CircleFloatingButton> {
     var quantity = widget.items.length;
     return Container(
       child: Stack(
-        overflow: Overflow.visible,
-        children: List.generate(
+        clipBehavior: Clip.none, children: List.generate(
           quantity,
           (index) {
             var angulo = (360) / (quantity) * (index);
@@ -290,8 +288,7 @@ class CircleFloatingButtonState extends State<CircleFloatingButton> {
 
     return Container(
       child: Stack(
-        overflow: Overflow.visible,
-        children: List.generate(
+        clipBehavior: Clip.none, children: List.generate(
           quantity,
           (index) {
             var angulo = (180) / (quantity - 1) * (index);
