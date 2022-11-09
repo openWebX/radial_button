@@ -34,6 +34,31 @@ class CircleFloatingButton extends StatefulWidget {
       this.opacity, this.child})
       : super(key: key ?? UniqueKey());
 
+  factory CircleFloatingButton.dockedFloatingActionButton(
+      {List<Widget>? items,
+        double radius = 100,
+        Duration? duration,
+        IconData? icon,
+        Color? color,
+        Curve? curveAnim,
+        bool? useOpacity,
+        Key? key,
+        Widget? child}) {
+    return CircleFloatingButton(
+        items: items,
+        key: key,
+        radius: radius,
+        position: Position.bottom,
+        type: CircleType.semi,
+        duration: duration,
+        buttonIcon: icon,
+        buttonColor: color,
+        curve: curveAnim,
+        opacity: useOpacity,
+        child: child
+    );
+  }
+
   factory CircleFloatingButton.floatingActionButton(
       {List<Widget>? items,
       double radius = 100,
