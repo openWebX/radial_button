@@ -314,7 +314,7 @@ class CircleFloatingButtonState extends State<CircleFloatingButton> {
         clipBehavior: Clip.none, children: List.generate(
           quantity,
           (index) {
-            var angulo = (180) / (quantity - 1) * (index);
+            var angulo = (120) / (quantity - 1) * (index);
 
             return CircleButton(
               finalRight: _getOffset(
