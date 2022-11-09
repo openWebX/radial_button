@@ -4,22 +4,22 @@ import 'dart:math' as math;
 import 'circle_button.dart';
 
 class CircleFloatingButton extends StatefulWidget {
-  final List<Widget> items;
+  final List<Widget>? items;
   final double radius;
-  final Position position;
-  final double right;
-  final double top;
+  final Position? position;
+  final double? right;
+  final double? top;
   final bool completeCircle;
-  final CircleType type;
-  final Duration duration;
-  final Color buttonColor;
-  final IconData buttonIcon;
-  final Curve curve;
-  final bool opacity;
-  final Widget child;
+  final CircleType? type;
+  final Duration? duration;
+  final Color? buttonColor;
+  final IconData? buttonIcon;
+  final Curve? curve;
+  final bool? opacity;
+  final Widget? child;
 
   CircleFloatingButton(
-      {Key key,
+      {Key? key,
       this.items,
       this.radius = 100,
       this.position = Position.right,
@@ -35,15 +35,15 @@ class CircleFloatingButton extends StatefulWidget {
       : super(key: key ?? UniqueKey());
 
   factory CircleFloatingButton.floatingActionButton(
-      {List<Widget> items,
+      {List<Widget>? items,
       double radius = 100,
-      Duration duration,
-      IconData icon,
-      Color color,
-      Curve curveAnim,
-      bool useOpacity,
-      Key key,
-      Widget child}) {
+      Duration? duration,
+      IconData? icon,
+      Color? color,
+      Curve? curveAnim,
+      bool? useOpacity,
+      Key? key,
+      Widget? child}) {
     return CircleFloatingButton(
       items: items,
       key: key,
@@ -60,14 +60,14 @@ class CircleFloatingButton extends StatefulWidget {
   }
 
   factory CircleFloatingButton.completeCircle(
-      {@required List<Widget> items,
+      {required List<Widget>? items,
       double radius = 100,
-      Duration duration,
-      IconData icon,
-      Color color,
-      Curve curveAnim,
-      bool useOpacity,
-      Key key, Widget child}) {
+      Duration? duration,
+      IconData? icon,
+      Color? color,
+      Curve? curveAnim,
+      bool? useOpacity,
+      Key? key, Widget? child}) {
     return CircleFloatingButton(
       items: items,
       radius: radius,
@@ -84,16 +84,16 @@ class CircleFloatingButton extends StatefulWidget {
   }
 
   factory CircleFloatingButton.semiCircle({
-    List<Widget> items,
-    Key key,
+    List<Widget>? items,
+    Key? key,
     double radius = 100,
-    Position position,
-    Duration duration,
-    IconData icon,
-    Color color,
-    Curve curveAnim,
-    bool useOpacity,
-    Widget child
+    Position? position,
+    Duration? duration,
+    IconData? icon,
+    Color? color,
+    Curve? curveAnim,
+    bool? useOpacity,
+    Widget? child
   }) {
     return CircleFloatingButton(
       items: items,
@@ -115,15 +115,15 @@ class CircleFloatingButton extends StatefulWidget {
 }
 
 class CircleFloatingButtonState extends State<CircleFloatingButton> {
-  BlocController _bloc;
+  BlocController? _bloc;
   GlobalKey containerKey = GlobalKey();
 
   close() {
-    _bloc.close();
+    _bloc!.close();
   }
 
   toggle(){
-	  _bloc.toggle();
+	  _bloc!.toggle();
   }
 
   @override
@@ -139,7 +139,7 @@ class CircleFloatingButtonState extends State<CircleFloatingButton> {
     return Offset(x, y);
   }
 
-  getRotatePosition(Position postion) {
+  getRotatePosition(Position? postion) {
     switch (postion) {
       case Position.right:
         return 90;
@@ -170,7 +170,7 @@ class CircleFloatingButtonState extends State<CircleFloatingButton> {
   }
 
   Widget quarterPart() {
-    var quantity = widget.items.length;
+    var quantity = widget.items!.length;
     return Container(
       width: 60 + widget.radius,
       height: 60 + widget.radius,
@@ -192,7 +192,7 @@ class CircleFloatingButtonState extends State<CircleFloatingButton> {
                   widget.radius,
               initState: widget.radius,
               bloc: _bloc,
-              widget: widget.items[index],
+              widget: widget.items![index],
               duration: widget.duration,
               curve: widget.curve,
               opacity: widget.opacity,
@@ -207,7 +207,7 @@ class CircleFloatingButtonState extends State<CircleFloatingButton> {
                   child: InkWell(
                     child: widget.child,
                     onTap: () {
-                      _bloc.toggle();
+                      _bloc!.toggle();
                     },
                   ),
                 )
@@ -215,7 +215,7 @@ class CircleFloatingButtonState extends State<CircleFloatingButton> {
                 heroTag: UniqueKey(),
                 backgroundColor: widget.buttonColor,
                 onPressed: () {
-                  _bloc.toggle();
+                  _bloc!.toggle();
                 },
                 child: Icon(widget.buttonIcon ?? Icons.add),
               ),
@@ -226,7 +226,7 @@ class CircleFloatingButtonState extends State<CircleFloatingButton> {
   }
 
   Widget complete() {
-    var quantity = widget.items.length;
+    var quantity = widget.items!.length;
     return Container(
       child: Stack(
         clipBehavior: Clip.none, children: List.generate(
@@ -250,7 +250,7 @@ class CircleFloatingButtonState extends State<CircleFloatingButton> {
                 duration: widget.duration,
                 curve: widget.curve,
                 opacity: widget.opacity,
-                widget: widget.items[index]);
+                widget: widget.items![index]);
           },
         )..add(
             Positioned(
@@ -263,7 +263,7 @@ class CircleFloatingButtonState extends State<CircleFloatingButton> {
                           child: InkWell(
                             child: widget.child,
                             onTap: () {
-                              _bloc.toggle();
+                              _bloc!.toggle();
                             },
                           ),
                         ),
@@ -272,7 +272,7 @@ class CircleFloatingButtonState extends State<CircleFloatingButton> {
                   heroTag: UniqueKey(),
                   backgroundColor: widget.buttonColor,
                   onPressed: () {
-                    _bloc.toggle();
+                    _bloc!.toggle();
                   },
                   child: Icon(widget.buttonIcon ?? Icons.add),
                 ),
@@ -284,7 +284,7 @@ class CircleFloatingButtonState extends State<CircleFloatingButton> {
   }
 
   Widget semi() {
-    var quantity = widget.items.length;
+    var quantity = widget.items!.length;
 
     return Container(
       child: Stack(
@@ -308,7 +308,7 @@ class CircleFloatingButtonState extends State<CircleFloatingButton> {
               curve: widget.curve,
               duration: widget.duration,
               opacity: widget.opacity,
-              widget: widget.items[index],
+              widget: widget.items![index],
             );
           },
         )..add(
@@ -320,7 +320,7 @@ class CircleFloatingButtonState extends State<CircleFloatingButton> {
                       child: InkWell(
                         child: widget.child,
                         onTap: () {
-                          _bloc.toggle();
+                          _bloc!.toggle();
                         },
                       ),
                     )
@@ -328,7 +328,7 @@ class CircleFloatingButtonState extends State<CircleFloatingButton> {
                 heroTag: UniqueKey(),
                 backgroundColor: widget.buttonColor,
                 onPressed: () {
-                  _bloc.toggle();
+                  _bloc!.toggle();
                 },
                 child: Icon(widget.buttonIcon ?? Icons.add),
               ),
