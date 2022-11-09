@@ -158,15 +158,13 @@ class CircleFloatingButtonState extends State<CircleFloatingButton> {
     switch (widget.type) {
       case CircleType.semi:
         return semi();
-        break;
       case CircleType.complete:
         return complete();
-        break;
       case CircleType.quarterPart:
         return quarterPart();
+      default:
+        return Container();
     }
-
-    return Container();
   }
 
   Widget quarterPart() {
